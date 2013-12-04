@@ -72,8 +72,15 @@ class AnonymizeCommand extends Command
     {
         $anonymized = $content;
         foreach ($rename as $original => $replacement) {
-            $anonymized = str_replace("_driver_{$original}", "_driver_{$replacement}", $anonymized);
+            $search = $this->buildDriverKeyValue($original);
+            $replace = $this->buildDriverKeyValue($replacement);
+            $anonymized = str_replace($search, $replace, $anonymized);
         }
         return $anonymized;
+    }
+    
+    private function buildDriverKeyValue($name)
+    {
+        return "_driver_{$name}_";
     }
 }
