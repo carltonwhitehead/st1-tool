@@ -1,0 +1,39 @@
+{
+    "name":"carltonwhitehead/st1-tool",
+    "type":"project",
+    "description":"st1 tool",
+    "keywords":[],
+    "license":"GPL-3.0",
+    "authors":[
+        {
+            "name":"Carlton Whitehead",
+            "email":"cebesius86@gmail.com",
+            "homepage":"http://github.com/carltonwhitehead",
+            "role":"developer"
+        }
+    ],
+    "require": {
+        "php":">=5.4.0",
+        "carltonwhitehead/peppercorn":"dev-dev",
+        "carltonwhitehead/phava":"dev-master",
+        "symfony/console": "v2.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "autoload":{
+        "psr-0":{
+            "St1Tool":"."
+        }
+    },
+    "repositories":[
+        {
+                "type":"vcs",
+                "url":"git@github.com:carltonwhitehead/peppercorn.git"
+        },
+        {
+                "type":"vcs",
+                "url":"git@github.com:carltonwhitehead/phava.git"
+        }
+    ]
+}

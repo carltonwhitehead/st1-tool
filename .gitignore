@@ -1,0 +1,11 @@
+# eclipse
+.buildpath
+.project
+.settings
+
+# composer
+vendor/
+composer.lock
+
+# data
+data/
