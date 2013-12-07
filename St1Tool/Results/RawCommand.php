@@ -12,6 +12,8 @@ use Peppercorn\St1\Line;
 use Peppercorn\St1\Query;
 use Peppercorn\St1\GroupByDriver;
 use Peppercorn\St1\SortTimeRawAscending;
+use Peppercorn\St1\ResultSetSimple;
+use Peppercorn\St1\Result;
 
 class RawCommand extends Command
 {
@@ -36,21 +38,19 @@ class RawCommand extends Command
     {
         $content = file_get_contents($filePath);
         $file = new File($content, array(new Category('')));
-        $query = new Query($file);
-        $query->distinct(new GroupByDriver());
-        $query->orderBy(SortTimeRawAscending::getSort());
-        return $query->execute();
+        return Query::rawResults($file);
     }
     
-    private function outputTable(OutputInterface $output, $result)
+    private function outputTable(OutputInterface $output, ResultSetSimple $results)
     {
         $tableHelper = $this->getHelper('table'); /* @var $tableHelper TableHelper */
         $tableHelper->setHeaders(array('Pos.', 'Class', 'Number', 'Name', 'Raw Time'));
         $rows = array();
-        $i = 0;
-        foreach ($result as $line /* @var $line Line */) {
+        for ($i = 1; $i <= $results->getCount(); $i++) {
+            $result = $results->getPlace($i);
+            $line = $result->getLine();
             $rows[] = array(
-            	++$i,
+            	$result->getPlace(),
                 $line->getDriverClassRaw(),
                 $line->getDriverNumber(),
                 $line->getDriverName(),
