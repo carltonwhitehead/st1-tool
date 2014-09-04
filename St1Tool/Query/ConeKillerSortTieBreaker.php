@@ -55,9 +55,4 @@ class ConeKillerSortTieBreaker extends SortTieBreaker
         return $this->paxTimeTieBreaker->breakTie($a, $b);
     }
 
-    protected function getReasonCodeForTieBreakByTimeDifference(Line $winner, Line $loser) {
-        // no-op
-    }
-
-                    
 }
