@@ -23,7 +23,7 @@ class ConeKillerSortTieBreaker extends SortTieBreaker
 
     protected function getRuns(Line $line)
     {
-        $key = $line->getDriverClassRaw() + "_" + $line->getDriverNumber();
+        $key = $line->getDriverClassRaw() . "_" . $line->getDriverNumber();
         $runs;
         if (isset($this->runCache[$key])) {
             $runs = $this->runCache[$key];
