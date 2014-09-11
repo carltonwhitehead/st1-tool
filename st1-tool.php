@@ -2,11 +2,12 @@
 <?php
 namespace St1Tool;
 
-use Symfony\Component\Console\Application;
-use St1Tool\Names\SetupCensusDataCommand;
 use St1Tool\Names\AnonymizeCommand;
-use St1Tool\Results\RawCommand;
+use St1Tool\Names\SetupCensusDataCommand;
 use St1Tool\Results\PaxCommand;
+use St1Tool\Results\RawCommand;
+use St1Tool\Results\ConeKillerCommand;
+use Symfony\Component\Console\Application;
 
 require 'vendor/autoload.php';
 
@@ -20,4 +21,5 @@ $app->add(new AnonymizeCommand());
 // Results
 $app->add(new RawCommand());
 $app->add(new PaxCommand());
+$app->add(new ConeKillerCommand());
 $app->run();
